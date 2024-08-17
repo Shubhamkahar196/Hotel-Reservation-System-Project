@@ -98,7 +98,7 @@ public class Main {
     }
 
     private static void viewReservation(Connection connection) throws SQLException {
-        String sql = "SELECT reservation_id, guest_name, room_number, reservation_date FROM reservations";
+        String sql = "SELECT reservation_id, guest_name, room_number,contact_number, reservation_date FROM reservations";
 
         try(Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(sql)){
@@ -133,9 +133,8 @@ public class Main {
             System.out.print("Enter guest name: ");
             String guestName = sc.next();
 
-            String sql = "SELECT room_number FROM reservations " +
-                    "WHERE reservation_id = " + reservationId +
-                    "AND guest_name = '" + guestName +"'";
+             String sql = "SELECT room_number FROM reservations WHERE reservation_id = "
+                    + reservationId + " AND guest_name = '" + guestName + "';";
 
             try(Statement statement = connection.createStatement();
                 ResultSet resultSet = statement.executeQuery(sql)){
